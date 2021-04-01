@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class HighScores : MonoBehaviour
 {
     public Text m_ScoreTab;
+    public Text m_MessageText;
+    public Text m_FinalScoreText;
     public int[] scores = new int[10];
     string currentDirectory;
     public string scoreFileName = "highscores.txt";
@@ -28,6 +30,8 @@ public class HighScores : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab) && ScoreTabToggle == false && gameState.State == GameManager.GameState.GameOver)
         {
             m_ScoreTab.gameObject.SetActive(true);
+            m_FinalScoreText.gameObject.SetActive(false);
+            m_MessageText.gameObject.SetActive(false);
             ScoreTabToggle = true;
             for (int i = 0; i < scores.Length; i++)
             {
@@ -36,6 +40,13 @@ public class HighScores : MonoBehaviour
             m_ScoreTab.text = tabedScored;
         }
         else if (Input.GetKeyDown(KeyCode.Tab) && ScoreTabToggle == true)
+        {
+            m_ScoreTab.gameObject.SetActive(false);
+            m_FinalScoreText.gameObject.SetActive(true);
+            m_MessageText.gameObject.SetActive(true);
+            ScoreTabToggle = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.Return) && ScoreTabToggle == true)
         {
             m_ScoreTab.gameObject.SetActive(false);
             ScoreTabToggle = false;

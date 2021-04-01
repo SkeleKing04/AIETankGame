@@ -142,7 +142,7 @@ public class GameManager : MonoBehaviour
                     spTank.spawnTank();
                 }
                 break;
-        }
+        }   
         if (Input.GetKeyUp(KeyCode.Escape))
         {
             Application.Quit();

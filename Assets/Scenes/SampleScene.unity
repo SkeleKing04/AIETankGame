@@ -1377,6 +1377,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ScoreTab: {fileID: 308776947}
+  m_MessageText: {fileID: 909894741}
+  m_FinalScoreText: {fileID: 1244854628}
   scores: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   scoreFileName: highscores.txt
 --- !u!45 &262801566
