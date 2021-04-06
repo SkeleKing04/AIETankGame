@@ -25,11 +25,13 @@ ScriptsOnlyBuild:
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
     - UnityEngine.UI.Outline
     - UnityEngine.UI.Text
+    - UnityEngine.UI.VerticalLayoutGroup
   sceneClasses:
     Assets/Scenes/SampleScene.unity:
     - Class: 1
@@ -69,49 +71,53 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11146}
+      Script: {instanceID: 11148}
     - Class: 114
-      Script: {instanceID: 11156}
+      Script: {instanceID: 11158}
     - Class: 114
-      Script: {instanceID: 11300}
+      Script: {instanceID: 11302}
     - Class: 114
-      Script: {instanceID: 11314}
+      Script: {instanceID: 11316}
     - Class: 114
-      Script: {instanceID: 11348}
+      Script: {instanceID: 11350}
     - Class: 114
-      Script: {instanceID: 11356}
+      Script: {instanceID: 11358}
     - Class: 114
-      Script: {instanceID: 11578}
+      Script: {instanceID: 11580}
     - Class: 114
-      Script: {instanceID: 11742}
+      Script: {instanceID: 11744}
     - Class: 114
-      Script: {instanceID: 11940}
+      Script: {instanceID: 11942}
     - Class: 114
-      Script: {instanceID: 11992}
+      Script: {instanceID: 11994}
     - Class: 114
-      Script: {instanceID: 12178}
+      Script: {instanceID: 12124}
     - Class: 114
-      Script: {instanceID: 12296}
+      Script: {instanceID: 12180}
     - Class: 114
-      Script: {instanceID: 12318}
+      Script: {instanceID: 12216}
     - Class: 114
-      Script: {instanceID: 12524}
+      Script: {instanceID: 12298}
     - Class: 114
-      Script: {instanceID: 12604}
+      Script: {instanceID: 12320}
     - Class: 114
-      Script: {instanceID: 12660}
+      Script: {instanceID: 12526}
     - Class: 114
-      Script: {instanceID: 12676}
+      Script: {instanceID: 12606}
     - Class: 114
-      Script: {instanceID: 12690}
+      Script: {instanceID: 12662}
     - Class: 114
-      Script: {instanceID: 12704}
+      Script: {instanceID: 12678}
     - Class: 114
-      Script: {instanceID: 12900}
+      Script: {instanceID: 12692}
     - Class: 114
-      Script: {instanceID: 12946}
+      Script: {instanceID: 12706}
     - Class: 114
-      Script: {instanceID: 12962}
+      Script: {instanceID: 12902}
+    - Class: 114
+      Script: {instanceID: 12948}
+    - Class: 114
+      Script: {instanceID: 12964}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -193,7 +199,7 @@ ScriptsOnlyBuild:
     className: ActivationTrack
   - hash:
       serializedVersion: 2
-      Hash: 34877d82bfbd037ed95404ad21393dd9
+      Hash: fb2cb46c6d2caac1c5f4e40b2e1acb26
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -529,7 +535,7 @@ ScriptsOnlyBuild:
     className: SpeedBoostPU
   - hash:
       serializedVersion: 2
-      Hash: 5f7b35fc52773a257aed11ca8f218c2c
+      Hash: 40a772644a5f9c1582db578f0cb3b5c6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: HighScores

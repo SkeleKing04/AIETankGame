@@ -14,6 +14,10 @@ public class TankShooting : MonoBehaviour
     public float m_LaunchForce = 30f;
     public int m_bombCount = 3;
     // Update is called once per frame
+    private void OnEnable()
+    {
+        m_bombCount = 3;
+    }
     private void Update()
     {
         // TODO: Later on, we'll check with the 'Game Manager' to make

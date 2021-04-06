@@ -7,19 +7,19 @@ using UnityEngine.UI;
 
 public class HighScores : MonoBehaviour
 {
-    public Text m_ScoreTab;
-    public Text m_MessageText;
-    public Text m_FinalScoreText;
+    //public Text m_ScoreTab;
+    //public Text m_MessageText;
+    //public Text m_FinalScoreText;
     public int[] scores = new int[10];
     string currentDirectory;
     public string scoreFileName = "highscores.txt";
-    string tabedScored = "";
-    private bool ScoreTabToggle = false;
+    //string tabedScored = "";
+    //private bool ScoreTabToggle = false;
     GameManager gameState;
     private void Start()
     {
         gameState = FindObjectOfType<GameManager>();
-        m_ScoreTab.gameObject.SetActive(false);
+        //m_ScoreTab.gameObject.SetActive(false);
         currentDirectory = Application.dataPath;
         Debug.Log("Our current directory is: " + currentDirectory);
 
@@ -27,7 +27,7 @@ public class HighScores : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && ScoreTabToggle == false && gameState.State == GameManager.GameState.GameOver)
+        /*if (Input.GetKeyDown(KeyCode.Tab) && ScoreTabToggle == false && gameState.State == GameManager.GameState.GameOver)
         {
             m_ScoreTab.gameObject.SetActive(true);
             m_FinalScoreText.gameObject.SetActive(false);
@@ -50,7 +50,7 @@ public class HighScores : MonoBehaviour
         {
             m_ScoreTab.gameObject.SetActive(false);
             ScoreTabToggle = false;
-        }
+        }*/
     }
     public void LoadScoresFromFile()
     {

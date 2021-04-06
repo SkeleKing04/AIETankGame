@@ -18,8 +18,13 @@ public class GameManager : MonoBehaviour
     public Image m_lowHealthEdge;
     public List<GameObject> m_Tanks = new List<GameObject>();
     public GameObject m_PlayerTank;
+    public GameObject m_HighScorePanel;
+    public Text m_HighScoresText;
+    public Button m_NewGameButton;
+    public Button m_HighScoresButton;
     private float m_gameTime = 0;
     private int  m_Score;
+    private bool ScoreTabToggle;
     public float GameTime { get { return m_gameTime; } }
     public enum GameState
     {
@@ -48,6 +53,9 @@ public class GameManager : MonoBehaviour
         m_TimerText.gameObject.SetActive(false);
         m_MessageText.text = "Get Ready";
         m_FinalScore.gameObject.SetActive(false);
+        m_NewGameButton.gameObject.SetActive(false);
+        m_HighScoresButton.gameObject.SetActive(false);
+        m_HighScorePanel.gameObject.SetActive(false);
         m_lowHealthEdge.gameObject.SetActive(false);
     }
     private void Update()
@@ -99,6 +107,13 @@ public class GameManager : MonoBehaviour
                     m_TimerText.gameObject.SetActive(false);
                     m_FinalScore.gameObject.SetActive(true);
                     m_lowHealthEdge.gameObject.SetActive(false);
+                    m_NewGameButton.gameObject.SetActive(true);
+                    m_HighScoresButton.gameObject.SetActive(true);
+                    if (ScoreTabToggle == true)
+                    {
+                        m_HighScorePanel.gameObject.SetActive(false);
+                        ScoreTabToggle = false;
+                    }
                     m_Score = Mathf.RoundToInt(0 + ( m_gameTime * (m_Tanks.Count - 1)));
                     m_MessageText.text = "Your final score is:";
                     m_FinalScore.text = m_Score.ToString();
@@ -125,6 +140,8 @@ public class GameManager : MonoBehaviour
                     m_TimerNum.gameObject.SetActive(true);
                     m_TimerText.gameObject.SetActive(true);
                     m_FinalScore.gameObject.SetActive(false);
+                    m_NewGameButton.gameObject.SetActive(false);
+                    m_HighScoresButton.gameObject.SetActive(false);
                     foreach (GameObject tank in m_Tanks)
                     {
                         tank.SetActive(false);
@@ -147,6 +164,10 @@ public class GameManager : MonoBehaviour
         {
             Application.Quit();
         }
+        if ((Input.GetKeyUp(KeyCode.Return) || Input.GetKeyUp(KeyCode.Tab)) && ScoreTabToggle == true)
+        {
+            m_HighScorePanel.gameObject.SetActive(false);
+        }
     }
     private bool IsPlayerDead()
     {
@@ -160,5 +181,68 @@ public class GameManager : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void OnNewGame()
+    {
+        m_gameTime = 0;
+        m_GameState = GameState.Playing;
+        m_MessageText.text = "";
+        m_BombCountNum.gameObject.SetActive(true);
+        m_BombCountText.gameObject.SetActive(true);
+        m_ScoreNum.gameObject.SetActive(true);
+        m_ScoreText.gameObject.SetActive(true);
+        m_TimerNum.gameObject.SetActive(true);
+        m_TimerText.gameObject.SetActive(true);
+        m_FinalScore.gameObject.SetActive(false);
+        m_NewGameButton.gameObject.SetActive(false);
+        m_HighScoresButton.gameObject.SetActive(false);
+        foreach (GameObject tank in m_Tanks)
+        {
+            tank.SetActive(false);
+        }
+        foreach (Bomb bomb in FindObjectsOfType<Bomb>())
+        {
+            bomb.Kill();
+        }
+        m_Tanks.RemoveRange(0, m_Tanks.Count);
+        m_Tanks.Add(m_PlayerTank);
+        m_Tanks[0].SetActive(true);
+        m_PlayerTank.transform.position = new Vector3(0, 0, 0);
+        m_PlayerTank.transform.rotation = new Quaternion(0, 0, 0, 0);
+        TankSpawner spTank = Object.FindObjectOfType<TankSpawner>();
+        spTank.spawnTank();
+        if (ScoreTabToggle == true)
+        {
+            m_HighScorePanel.gameObject.SetActive(false);
+            ScoreTabToggle = false;
+        }
+    }
+    public void OnHighScores()
+    {
+        Debug.Log(m_Score);
+        if (ScoreTabToggle == false)
+        {
+            m_HighScorePanel.gameObject.SetActive(true);
+            m_FinalScore.gameObject.SetActive(false);
+            m_MessageText.gameObject.SetActive(false);
+            ScoreTabToggle = true;
+            string tabbedScore = "";
+            for (int i = 0; i < m_HighScores.scores.Length; i++)
+            {
+                tabbedScore += (i + 1) + ": " + m_HighScores.scores[i] + "\n";
+                Debug.Log(m_HighScores.scores[i]);
+            }
+            
+            m_HighScoresText.text = tabbedScore;
+        }
+        else if (ScoreTabToggle == true)
+        {
+            m_HighScorePanel.gameObject.SetActive(false);
+            m_FinalScore.gameObject.SetActive(true);
+            m_MessageText.gameObject.SetActive(true);
+            ScoreTabToggle = false;
+        }
+        
     }
 }

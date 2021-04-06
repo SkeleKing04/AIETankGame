@@ -32,6 +32,7 @@ public class tankHealth : MonoBehaviour
     {
         //when the tank is enabled, reset the tank's health and whether or not it's dead
         m_CurrentHealth = m_StartingHealth;
+        m_HealthBarBackdrop.color = Color.white;
         m_Dead = false;
         SetHealthUI();
     }
@@ -43,7 +44,7 @@ public class tankHealth : MonoBehaviour
         }
         if (tag == "Player")
         {
-            m_lowHealthEdge.transform.localScale = Vector3.one * ((m_CurrentHealth / m_StartingHealth) + 0.72f);
+            m_lowHealthEdge.transform.localScale = Vector3.one * ((m_CurrentHealth / m_StartingHealth) + 1);
             if (m_CurrentHealth <= (m_StartingHealth * 0.25))
             {
                 m_HealthBarBackdrop.color = Color.red;

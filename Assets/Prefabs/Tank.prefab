@@ -292,7 +292,7 @@ MonoBehaviour:
   m_CurrentHealth: 0
   m_HealthBar: {fileID: 531959556104074294}
   m_HealthBarBackdrop: {fileID: 9028231248074199927}
-  m_lowHealthEdge: {fileID: 246786872067338812}
+  m_lowHealthEdge: {fileID: 0}
 --- !u!1 &2181956685417214054
 GameObject:
   m_ObjectHideFlags: 0
